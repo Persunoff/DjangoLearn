@@ -2,6 +2,7 @@ from django.contrib import admin
 
 from .models import Choice, Question
 
+
 admin.site.register(Choice)
 
 class ChoiceInline(admin.TabularInline):
@@ -10,6 +11,7 @@ class ChoiceInline(admin.TabularInline):
 
 
 class QuestionAdmin(admin.ModelAdmin):
+    list_display = ('question_text', 'pub_date')
     list_display = ('question_text', 'pub_date', 'was_published_recently')
     list_filter = ['pub_date']
     search_fields = ['question_text']
