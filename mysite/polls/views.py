@@ -5,7 +5,7 @@ from django.views import generic
 from django.utils import timezone
 
 
-from .models import Choice, Question
+from .models import Choice, Question, Answer
 
 
 def index(request):
@@ -22,6 +22,12 @@ def detail(request, question_id):
 def results(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
     return render(request, 'polls/results.html', {'question': question})
+
+
+def get_name(request):
+    if request.method == 'POST':
+        your_name = request.POST.get('your_name')
+
 
 
 class DetailView(generic.DetailView):
